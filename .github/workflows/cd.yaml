@@ -1,0 +1,32 @@
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning'
+      tags:
+        description: 'Test scenario tags' 
+      numOctocats:
+        description: 'Number of Octocats'
+        required: false
+        default: '1'
+      octocatEyeColor:
+        description: 'Eye color of the Octocats'
+        required: true
+      searchProducts:
+        description: 'search products'
+        required: true
+        default: '@search-product-v1'
+jobs:
+  printInputs:
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo "search products: ${{ github.event.inputs.searchProducts }}"
+        echo "Log level: ${{ github.event.inputs.logLevel }}"
+        echo "Tags: ${{ github.event.inputs.tags }}" 
+        echo "OctocatEyeColor: ${{ github.event.inputs.octocatEyeColor }}"
+        echo ~ && ls -lta ~ && whoami && hostname
