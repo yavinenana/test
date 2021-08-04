@@ -34,7 +34,7 @@ jobs:
         echo "Completed job 2, but triggering failure"
         exit 1
   job3:
-    name: Job 3
+    name: name Job 3
     needs: job1
     runs-on: ubuntu-latest
 
