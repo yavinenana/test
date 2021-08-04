@@ -16,9 +16,14 @@ jobs:
     steps:
       - name: step1
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+        inputs:
+          value:
+            description: 'some description'
+            required: true
         run: |
           echo "Log level: warning"
-          echo "Tags: tag1" 
+          echo "Tags: tag1"
+          echo "value: ${{ github.event.inputs.value }}" 
       - name: step2
         if: ${{ github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' }}
         run: |
@@ -32,7 +37,6 @@ jobs:
     - name: Dependant is Running
       run: |
         echo "Completed job 2, but triggering failure"
-        exit 1
   job3:
     name: name Job 3
     needs: printInputs
