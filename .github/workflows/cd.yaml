@@ -14,13 +14,31 @@ jobs:
   printInputs:
     runs-on: ubuntu-latest
     steps:
-      - if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+      - name: step1
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         run: |
-          #echo "Log level: ${{ github.event.inputs.logLevel }}"
-          #echo "Tags: ${{ github.event.inputs.tags }}" 
           echo "Log level: warning"
           echo "Tags: tag1" 
-      - if: ${{ github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' }}
+      - name: step2
+        if: ${{ github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' }}
         run: |
           echo "Log level: ${{ github.event.inputs.logLevel }}"
           echo "Tags: ${{ github.event.inputs.tags }}"
+  job2:
+    name: namejob2
+    needs: print
+    runs-on: ubuntu-latest
+    steps:
+    - name: Dependant is Running
+      run: |
+        echo "Completed job 2, but triggering failure"
+        exit 1
+  job3:
+    name: Job 3
+    needs: job1
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Will never run
+      run: |
+        echo "If you can read this, the experiment failed"
