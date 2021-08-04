@@ -35,7 +35,7 @@ jobs:
         exit 1
   job3:
     name: name Job 3
-    needs: job1
+    needs: printInputs
     runs-on: ubuntu-latest
 
     steps:
