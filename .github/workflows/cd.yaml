@@ -2,7 +2,11 @@ on:
 #  [push, workflow_dispatch]
   push:
     branches: [ main ]
-  workflow_dispatch:
+    inputs:
+      value:
+      description: 'some description'
+      required: true
+   workflow_dispatch:
     inputs:
       logLevel:
         description: 'Log level'     
@@ -16,10 +20,10 @@ jobs:
     steps:
       - name: step1
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-        inputs:
-          value:
-            description: 'some description'
-            required: true
+#        inputs:
+#          value:
+#            description: 'some description'
+#            required: true
         run: |
           echo "Log level: warning"
           echo "Tags: tag1"
