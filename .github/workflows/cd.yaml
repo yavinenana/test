@@ -26,7 +26,7 @@ jobs:
           echo "Tags: ${{ github.event.inputs.tags }}"
   job2:
     name: namejob2
-    needs: print
+    needs: printInputs
     runs-on: ubuntu-latest
     steps:
     - name: Dependant is Running
