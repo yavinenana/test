@@ -1,0 +1,54 @@
+name: bump version tagging
+on: 
+  push:
+    branches: [ tagging-action ]
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+
+jobs:
+  Bump-Version:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Bump version and push tag
+      uses: anothrNick/github-tag-action@master
+      env:
+        DEFAULT_BUMP: none
+        GITHUB_TOKEN: ${{ secrets.PAT_YAVINENANA }}
+        REPO_OWNER: yavinenana
+        WITH_V: true
+        RELEASE_BRANCHES: release.*
+
+#  printInputs:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: step1
+#        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+#        run: |
+#          echo "Log level: warning"
+#          echo "Tags: tag1"
+#          echo "value: ${{ github.event.inputs.value }}" 
+#      - name: step2
+#        if: ${{ github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' }}
+#        run: |
+#          echo "Log level: ${{ github.event.inputs.logLevel }}"
+#          echo "Tags: ${{ github.event.inputs.tags }}"
+#  job2:
+#    name: namejob2
+#    needs: printInputs
+#    runs-on: ubuntu-latest
+#    steps:
+#    - name: Dependant is Running
+#      run: |
+#        echo "Completed job 2, but triggering failure"
+#        #exit 1
+#  job3:
+#    name: name Job 3
+#    needs: printInputs
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#    - name: Will never run
+#      run: |
+#        echo "If you can read this, the experiment failed"
