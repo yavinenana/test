@@ -1,7 +1,7 @@
 name: bump version tagging
 on: 
   push:
-    branches: [ release,main ]
+    branches: [ release,main,tagging-action ]
     # Sequence of patterns matched against refs/tags
     tags:
       - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
@@ -17,4 +17,4 @@ jobs:
         DEFAULT_BUMP: none
         GITHUB_TOKEN: ${{ secrets.PAT_YAVINENANA }}
         WITH_V: true
-        RELEASE_BRANCHES: release.*
+        RELEASE_BRANCHES: tagging-action.*
