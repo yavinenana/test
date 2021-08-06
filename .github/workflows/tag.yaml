@@ -17,4 +17,4 @@ jobs:
         DEFAULT_BUMP: minor
         GITHUB_TOKEN: ${{ secrets.PAT_YAVINENANA }}
         WITH_V: true
-        RELEASE_BRANCHES: tagging-action.*
+        RELEASE_BRANCHES: release.*
