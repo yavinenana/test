@@ -1,2 +1,4 @@
 # test
-VERSION 1
+
+-- VERSION 1
+
