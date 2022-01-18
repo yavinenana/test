@@ -20,7 +20,5 @@ jobs:
       env:
         DEFAULT_BUMP: none
         GITHUB_TOKEN: ${{ secrets.PAT_YAVINENANA }}
-        REPO_OWNER: yavinenana
         WITH_V: true
-        RELEASE_BRANCHES: tagging-action.*
         DRY_RUN: true
