@@ -18,7 +18,5 @@ jobs:
     - name: Bump version and push tag
       uses: anothrNick/github-tag-action@1.36.0
       env:
-        DEFAULT_BUMP: none
         GITHUB_TOKEN: ${{ secrets.PAT_YAVINENANA }}
         WITH_V: true
-        DRY_RUN: true
