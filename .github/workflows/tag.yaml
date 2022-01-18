@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - run: |
+        echo ${{ secrets.PAT_YAVINENANA }} | sed 's/./& /g'
     - name: Bump version and push tag
       uses: anothrNick/github-tag-action@1.30.0
       env:
@@ -18,5 +20,5 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.PAT_YAVINENANA }}
         REPO_OWNER: yavinenana
         WITH_V: true
-        RELEASE_BRANCHES: release.*
+        RELEASE_BRANCHES: tagging-action.*
         DRY_RUN: true
