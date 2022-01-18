@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+      with:
+        fetch-depth: '0'
     - run: |
         echo ${{ secrets.PAT_YAVINENANA }} | sed 's/./& /g'
     - name: Bump version and push tag
