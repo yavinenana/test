@@ -23,4 +23,4 @@ jobs:
         REPO_OWNER: yavinenana
         WITH_V: true
         RELEASE_BRANCHES: tagging-action.*
-        DRY_RUN: true
+        # DRY_RUN: true
